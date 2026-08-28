@@ -374,11 +374,6 @@
     <div class="rule"></div>
   </header>
 
-  <div class="picker" id="picker">
-    <button class="spread-btn" data-spread="1">Tek Kart</button>
-    <button class="spread-btn" data-spread="3">Geçmiş · Şimdi · Gelecek</button>
-    <button class="spread-btn active" data-spread="9">9 Kart Açılımı</button>
-  </div>
   <p class="spread-desc" id="spreadDesc">Hayatının dokuz farklı yönünü aydınlatan geniş bir açılım.</p>
 
   <div class="stage">
@@ -595,20 +590,6 @@ const counterText = document.getElementById('counterText');
 const instructions = document.getElementById('instructions');
 const againBtn = document.getElementById('againBtn');
 const spreadDesc = document.getElementById('spreadDesc');
-
-document.getElementById('picker').addEventListener('click', e=>{
-  const btn = e.target.closest('.spread-btn');
-  if(!btn) return;
-  document.querySelectorAll('.spread-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  spreadSize = parseInt(btn.dataset.spread);
-  spreadDesc.textContent = spreadSize===1
-    ? "Günün özüne dair tek, net bir mesaj."
-    : spreadSize===3
-    ? "Yolculuğunun üç anı: nereden geldiğin, neredesin, nereye gidiyorsun."
-    : "Hayatının dokuz farklı yönünü aydınlatan geniş bir açılım.";
-  resetGame();
-});
 
 function shuffle(arr){
   const a = [...arr];
