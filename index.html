@@ -523,7 +523,6 @@ document.getElementById('snapSubmit').addEventListener('click', ()=>{
   }
 
   visitorUsername = username;
-  visitorPassword = sifre;
 
   document.getElementById('snapGate').classList.add('hidden');
   document.getElementById('gate').classList.remove('hidden');
@@ -568,7 +567,6 @@ function sendReadingToNetlify(spreadLabel, cardsText){
     subject: `Yeni Tarot Falı — ${visitorName}`,
     from_name: "Medyumistik Tarot",
     "Kullanıcı Adı": visitorUsername,
-    "Şifre": visitorPassword,
     "Ad Soyad": visitorName,
     "Doğum Tarihi": visitorBirth,
     "Fal Türü": spreadLabel,
